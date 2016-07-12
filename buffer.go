@@ -18,7 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//Package bbufer is a  more efficient bytes buffer both in time and memory
+//Package bbufer is a more efficient bytes buffer both in time and memory
 // compared to the standard library `bytes.Buffer`.
 package bbuffer
 
@@ -28,18 +28,18 @@ import (
 	"sync"
 )
 
-// Buffer is
+// Buffer struct
 type Buffer struct {
-	bufs [][]byte
-	acci []int
+	bufs [][]byte // storing the wirtten data
+	acci []int    // accumulated size
 }
 
-// NewBuffer is
+// NewBuffer create a new buffer
 func NewBuffer() *Buffer {
 	return new(Buffer)
 }
 
-// Writes is
+// Writes append byte slice to the slice of byte slice
 func (b *Buffer) Write(p []byte) {
 	if b.bufs == nil {
 		b.bufs = make([][]byte, 0)
@@ -85,10 +85,10 @@ func (b *Buffer) Bytes() []byte {
 	return result
 }
 
-// ErrInvalidSliceRange is error when using invalid range for Slice() method
+// ErrInvalidSliceRange is the error when using invalid range for Slice() method
 var ErrInvalidSliceRange = errors.New("bbufer: invalid slice range")
 
-// Slice is
+// Slice is used to slicing the byte slice
 func (b *Buffer) Slice(start, end int) ([]byte, error) {
 	if start < 0 || end < 0 {
 		return nil, ErrInvalidSliceRange

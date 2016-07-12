@@ -35,7 +35,7 @@ var scales []int
 func init() {
 	rand.Seed(1)
 
-	scales = []int{1e1, 1e3, 1e6, 1e8}
+	scales = []int{1e3, 1e6, 1e8}
 	texts = make([][]byte, len(scales))
 	points = make([][]int, len(scales))
 
@@ -49,7 +49,7 @@ func init() {
 
 		s, r := 0, 0
 		for s < len(text) {
-			r = rand.Intn(len(text)/10) + 1 // about 10 fragments
+			r = rand.Intn(len(text)/100) + 1 // about 100 fragments
 			s += r
 			if s < len(text) {
 				points[i] = append(points[i], s)
