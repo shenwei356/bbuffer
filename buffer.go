@@ -85,6 +85,12 @@ func (b *Buffer) Bytes() []byte {
 	return result
 }
 
+// Reset reset the data
+func (b *Buffer) Reset() {
+	b.bufs = make([][]byte, 0)
+	b.acci = make([]int, 0)
+}
+
 // ErrInvalidSliceRange is the error when using invalid range for Slice() method
 var ErrInvalidSliceRange = errors.New("bbufer: invalid slice range")
 

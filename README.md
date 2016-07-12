@@ -19,6 +19,17 @@ This package is "go-gettable", just:
 
     go get -u github.com/shenwei356/bbuffer
 
+Usage
+------
+
+Just like `bytes.Buffer`
+
+    import "github.com/shenwei356/bbuffer"
+    var b bbufer.Buffer // or b := bbufer.NewBuffer()
+    b.Write(data)       // write []byte to it
+    b.Bytes()           // return the data
+    b.Reset()           // reset
+
 Benchmark
 ------
 
