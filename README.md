@@ -8,7 +8,7 @@ compared to the standard library `bytes.Buffer`.
 
 `bytes.Buffer` frequently allots space and copies `slice` when the buffer size grows.
 However `bbufer` just stores the data from method `Writes()` into `slice` of `byte
-slice` (`[][]byte`), and only copy once when we need all the data by calling
+slice` (`[][]byte`), and only copies once when we need all the data by calling
  method `Bytes()`, which could reduce memory allocation.
 
 
@@ -25,13 +25,13 @@ Benchmark
 Time
 
     $ go test -bench=. -memprofile mem.out -cpuprofile cpu.out
-    generate test data for test. scale 1/4: 10
-    generate test data for test. scale 2/4: 1000
-    generate test data for test. scale 3/4: 1000000
-    generate test data for test. scale 4/4: 100000000
+    generate test data for test. scale 1/3: 1000
+    generate test data for test. scale 2/3: 1000000
+    generate test data for test. scale 3/3: 100000000
     PASS
     BenchmarkBBufer-4       2000000000               0.08 ns/op
-    BenchmarkBytesBufer-4   2000000000               0.14 ns/op
+    BenchmarkBytesBufer-4   2000000000               0.16 ns/op
+
 
 
 CPU profile

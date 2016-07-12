@@ -34,12 +34,12 @@ type Buffer struct {
 	acci []int    // accumulated size
 }
 
-// NewBuffer create a new buffer
+// NewBuffer creates a new buffer
 func NewBuffer() *Buffer {
 	return new(Buffer)
 }
 
-// Writes append byte slice to the slice of byte slice
+// Writes appends byte slice to the slice of byte slice
 func (b *Buffer) Write(p []byte) {
 	if b.bufs == nil {
 		b.bufs = make([][]byte, 0)
