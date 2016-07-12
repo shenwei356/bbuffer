@@ -3,7 +3,7 @@ bbuffer
 
 [![GoDoc](https://godoc.org/github.com/shenwei356/bbuffer?status.svg)](https://godoc.org/github.com/shenwei356/bbuffer)
 
-`bbufer` -- a alternative of standard library `bytes.Buffer`.
+`bbufer` -- an alternative of standard library `bytes.Buffer`.
 
 `bytes.Buffer` frequently allots space and copies `slice` when the buffer size grows.
 However `bbufer` just stores the data from method `Writes()` into `slice` of `byte
