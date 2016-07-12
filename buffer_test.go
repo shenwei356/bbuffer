@@ -92,6 +92,7 @@ func BenchmarkBBufer(t *testing.B) {
 		}
 
 		b.Bytes()
+		b.Reset()
 	}
 }
 
@@ -110,6 +111,7 @@ func BenchmarkBytesBufer(t *testing.B) {
 		}
 
 		b.Bytes()
+		b.Reset()
 	}
 }
 

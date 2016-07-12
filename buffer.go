@@ -18,14 +18,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-//Package bbufer is a more efficient bytes buffer both in time and memory
+//Package bbuffer is a more efficient bytes buffer both in time and memory
 // compared to the standard library `bytes.Buffer`.
 package bbuffer
 
 import (
 	"errors"
-	"runtime"
-	"sync"
 )
 
 // Buffer struct
@@ -62,26 +60,14 @@ func (b *Buffer) Len() int {
 	return b.acci[len(b.acci)-1]
 }
 
-// ConcurrencyNum is Concurrency Number for parallelly copying slice
-var ConcurrencyNum = runtime.NumCPU()
-
 // Bytes returns the long bytes
 func (b *Buffer) Bytes() []byte {
 	result := make([]byte, b.Len())
 	i := 0
-	var wg sync.WaitGroup
-	tokens := make(chan int, ConcurrencyNum)
 	for _, buf := range b.bufs {
-		wg.Add(1)
-		tokens <- 1
-		go func(i int, buf []byte) {
-			copy(result[i:i+len(buf)], buf)
-			wg.Done()
-			<-tokens
-		}(i, buf)
+		copy(result[i:i+len(buf)], buf)
 		i += len(buf)
 	}
-	wg.Wait()
 	return result
 }
 

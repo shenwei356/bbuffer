@@ -3,14 +3,18 @@ bbuffer
 
 [![GoDoc](https://godoc.org/github.com/shenwei356/bbuffer?status.svg)](https://godoc.org/github.com/shenwei356/bbuffer)
 
-`bbufer` -- a more efficient bytes buffer both in time and memory
-compared to the standard library `bytes.Buffer`.
+`bbufer` -- a alternative of standard library `bytes.Buffer`.
 
 `bytes.Buffer` frequently allots space and copies `slice` when the buffer size grows.
 However `bbufer` just stores the data from method `Writes()` into `slice` of `byte
 slice` (`[][]byte`), and only copies once when we need all the data by calling
  method `Bytes()`, which could reduce memory allocation.
 
+Shortcoming
+-----------
+
+If writing a large number of times, it will bring high load to GC.
+system will cost a lot of time scanning objects.
 
 Install
 -------

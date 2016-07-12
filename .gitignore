@@ -24,3 +24,4 @@ _testmain.go
 *.directory
 *._test
 *.out
+*.test
